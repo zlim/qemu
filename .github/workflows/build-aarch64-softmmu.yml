@@ -1,0 +1,17 @@
+name: QEMU build (aarch64-softmmu)
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: configure
+      run: ./configure --target-list=aarch64-softmmu
+    - name: make
+      run: make -j
+    - name: make check
+      run: make -j check
